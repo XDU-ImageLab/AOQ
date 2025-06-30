@@ -289,7 +289,7 @@
             </thead>
             <tbody>
               <tr>
-                <td rowspan="10" style="vertical-align: middle;"><strong>ResNet-18<br>(FP: 71.8)</strong></td>
+                <td rowspan="9" style="vertical-align: middle;"><strong>ResNet-18<br>(FP: 71.8)</strong></td>
                 <td>LQ-Nets</td>
                 <td>2/2</td>
                 <td>64.9</td>
@@ -541,6 +541,10 @@
                 <th style="min-width: 100px;">W3A3</th>
                 <th style="min-width: 100px;">W4A4</th>
               </tr>
+              <tr>
+                <th style="min-width: 100px;">Acc (%)</th>
+                <th style="min-width: 100px;">Acc (%)</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
@@ -595,6 +599,10 @@
                 <th rowspan="2" style="min-width: 120px; text-align: center; vertical-align: middle;">Method</th>
                 <th style="min-width: 100px;">W2A2</th>
                 <th style="min-width: 100px;">W3A3</th>
+              </tr>
+              <tr>
+                <th style="min-width: 100px;">Acc (%)</th>
+                <th style="min-width: 100px;">Acc (%)</th>
               </tr>
             </thead>
             <tbody>
@@ -680,14 +688,6 @@
 
       <!-- Description / Motivation -->
       <div class="content has-text-justified" style="max-width: 800px; margin: 0 auto 1.5rem auto;">
-        <p>
-          To validate the effectiveness of each component of our proposed method, we conduct an ablation study by
-          progressively removing or modifying components and observing the impact on performance. The results,
-          summarized in Table 5, demonstrate the importance of weight quantization, the expansion of the solution
-          space, and the delayed suppression of oscillation in achieving superior quantization performance. Notably,
-          the combination of all these components leads to the most significant performance gain, confirming the
-          benefits of our comprehensive approach.
-        </p>
       </div>
     </div>
   </section>
@@ -696,7 +696,7 @@
     <div class="container is-max-desktop">
       <div class="box" style="padding: 1.5rem;">
         <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 5. Effects of different components of our strategy on the final performance.
+          Table 4. Effects of different components of our strategy on the final performance.
         </h2>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
@@ -712,7 +712,7 @@
                 <td>73.7</td>
               </tr>
               <tr>
-                <td style="text-align: left; padding-left: 1rem;">— Weight quantization</td>
+                <td style="text-align: left; padding-left: 1rem;">- Weight quantization</td>
                 <td>76.6</td>
               </tr>
               <tr>
