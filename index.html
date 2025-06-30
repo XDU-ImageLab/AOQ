@@ -152,10 +152,20 @@
       <div class="hero-body has-text-centered">
         <img src="static/images/zhaiyao.png" alt="Teaser" style="max-width: 60%; height: auto; border-radius: 8px;">
         <h2 class="subtitle has-text-centered">
-          We propose a novel quantization-aware training method, Allowing Oscillation Quantization (AOQ), which enhances
-          low-bit quantization by encouraging weight oscillation in early training to explore a broader solution space
-          and suppressing it later to ensure stable convergence.
+          In this work, we found that
         </h2>
+        <div class="content has-text-justified" style="max-width: 1000px; margin: 1rem auto 0 auto; padding: 0 2rem;">
+          <ol style="font-size: 1.1rem; line-height: 1.6;">
+            <li>In traditional quantization-aware training (QAT) methods, weights infrequently cross quantization
+              thresholds during training. This restricts the model to searching for quantized solutions only within a
+              local region, making it prone to sub-optimal solutions.</li>
+            <li>Moderate oscillations can actually serve as an effective exploration mechanism. By encouraging such
+              oscillations in the early training phase, the model can escape local optima and explore better
+              quantization configurations.</li>
+            <li>By decoupling quantization thresholds and levels, the learnable quantization parameters exhibit greater
+              stability during training.</li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
