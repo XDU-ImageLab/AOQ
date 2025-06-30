@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Towards Long-Horizon Vision-Language-Action System: Reasoning, Acting and Memory</title>
+  <title>Allowing Oscillation Quantization: Overcoming Solution Space Limitation in Low Bit-Width Quantization</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -76,7 +76,7 @@
               <span class="author-block"><a>Zihan Meng</a><sub>1</sub>,</span>
               <span class="author-block"><a>Jitai Ma</a><sub>1</sub>,</span>
               <span class="author-block"><a>Wenjin Guo</a><sub>1</sub>,</span>
-              <span class="author-block"><a>Haowei Li</a><sub>1</sub><sup>✉</sup>,</span>
+              <span class="author-block"><a>Haowei Li</a><sub>1</sub><sup></sup>,</span>
               <span class="author-block"><a>Haonan Qin</a><sub>1</sub>,</span>
               <span class="author-block"><a>Leyuan Fang</a><sub>2</sub>,</span>
               <span class="author-block"><a>Yunsong Li</a><sub>1</sub>,</span>
@@ -230,7 +230,7 @@
       <!-- Image -->
       <figure class="image" style="text-align: center; margin: 0 auto;">
         <img src="static/images/oscillation.png" alt="oscillation"
-          style="max-width: 70%; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
+          style="max-width: 80%; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
       </figure>
 
       <!-- Caption / Description with narrower width -->
@@ -261,7 +261,7 @@
     <div class="container is-max-desktop">
       <div class="box" style="padding: 1.5rem;">
         <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 2. Accuracy comparison to the state-of-the-art quantization methods with ResNet structure on ImageNet
+          Table 1. Accuracy comparison to the state-of-the-art quantization methods with ResNet structure on ImageNet
           dataset.
         </h2>
         <h2 class="has-text-centered">
@@ -529,437 +529,50 @@
     <div class="container is-max-desktop">
       <div class="box" style="padding: 1.5rem;">
         <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 1. The Success Rates of Different VLA Models across 24 Tasks in Four Long-Horizon Tasks.
-        </h2>
-
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
-            <!-- 第一部分 -->
-            <thead>
-              <tr>
-                <th colspan="8" class="has-text-centered"><strong>Coarse-Grained Long-Horizon Tasks</strong></th>
-                <th colspan="8" class="has-text-centered"><strong>Intensive Instruction-Following Tasks</strong>
-                </th>
-              </tr>
-              <tr>
-                <th rowspan="2">Method</th>
-                <th>Task1</th>
-                <th>Task2</th>
-                <th>Task3</th>
-                <th>Task4</th>
-                <th>Task5</th>
-                <th>Task6</th>
-                <th rowspan="2" style="min-width: 100px;">Avg. (%)</th>
-                <th>Task7</th>
-                <th>Task8</th>
-                <th>Task9</th>
-                <th>Task10</th>
-                <th>Task11</th>
-                <th>Task12</th>
-                <th rowspan="2" style="min-width: 100px;">Avg. (%)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>OpenVLA</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>3/10</td>
-                <td>0/10</td>
-                <td>2/10</td>
-                <td>1/10</td>
-                <td>10.00%</td>
-                <td>1/10</td>
-                <td>3/10</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>1/10</td>
-                <td>2/10</td>
-                <td>11.67%</td>
-              </tr>
-              <tr>
-                <td>RDT</td>
-                <td>5/10</td>
-                <td>3/10</td>
-                <td>0/10</td>
-                <td>3/10</td>
-                <td>6/10</td>
-                <td>5/10</td>
-                <td>36.67%</td>
-                <td>5/10</td>
-                <td>3/10</td>
-                <td>2/10</td>
-                <td>0/10</td>
-                <td>5/10</td>
-                <td>5/10</td>
-                <td>33.33%</td>
-              </tr>
-              <tr>
-                <td><strong>MindExplore</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>8/10</strong></td>
-                <td><strong>8/10</strong></td>
-                <td><strong>7/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>88.33%</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>8/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>93.33%</strong></td>
-              </tr>
-            </tbody>
-
-            <!-- 第二部分 -->
-            <thead>
-              <tr>
-                <th colspan="8" class="has-text-centered"><strong>Cross-Expert Tasks</strong></th>
-                <th colspan="8" class="has-text-centered"><strong>Zero-Shot Generalization Tasks</strong></th>
-              </tr>
-              <tr>
-                <th rowspan="2">Method</th>
-                <th>Task13</th>
-                <th>Task14</th>
-                <th>Task15</th>
-                <th>Task16</th>
-                <th>Task17</th>
-                <th>Task18</th>
-                <th rowspan="2" style="min-width: 100px;">Avg. (%)</th>
-                <th>Task19</th>
-                <th>Task20</th>
-                <th>Task21</th>
-                <th>Task22</th>
-                <th>Task23</th>
-                <th>Task24</th>
-                <th rowspan="2" style="min-width: 100px;">Avg. (%)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>OpenVLA</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>1/10</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>1.67%</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>2/10</td>
-                <td>0/10</td>
-                <td>0/10</td>
-                <td>3.33%</td>
-              </tr>
-              <tr>
-                <td>RDT</td>
-                <td>4/10</td>
-                <td>3/10</td>
-                <td>5/10</td>
-                <td>1/10</td>
-                <td>2/10</td>
-                <td>6/10</td>
-                <td>35.00%</td>
-                <td>2/10</td>
-                <td>1/10</td>
-                <td>3/10</td>
-                <td>1/10</td>
-                <td>0/10</td>
-                <td>2/10</td>
-                <td>15.00%</td>
-              </tr>
-              <tr>
-                <td><strong>MindExplore</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>93.33%</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>8/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>7/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>86.67%</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="box" style="padding: 1.5rem;">
-        <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 2. Comparison Results with the Most Powerful Closed-Source and Open-Source MLLMs on Three Tasks.
-        </h2>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
-            <thead>
-              <tr>
-                <th rowspan="2" style="min-width: 200px; text-align: center; vertical-align: middle;">Model</th>
-                <th colspan="2">Coarse-Grained<br>Long-Horizon Tasks</th>
-                <th colspan="2">Intensive Instruction<br>Following Tasks</th>
-                <th colspan="2">Cross-Expert<br>Multi-Tasks</th>
-                <th colspan="2">The Zero-Shot<br>Generalization Tasks</th>
-              </tr>
-              <tr>
-                <th style="white-space: nowrap; min-width: 110px;">ROUGE_L (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">Acc. (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">ROUGE_L (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">Acc. (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">ROUGE_L (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">Acc. (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">ROUGE_L (%)</th>
-                <th style="white-space: nowrap; min-width: 110px;">Acc. (%)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>GPT-4o-latest</td>
-                <td>33.02</td>
-                <td>47.00</td>
-                <td>37.54</td>
-                <td>50.00</td>
-                <td>41.59</td>
-                <td>61.00</td>
-                <td>29.17</td>
-                <td>21.00</td>
-              </tr>
-              <tr>
-                <td>Gemini-2.0-Flash</td>
-                <td>29.52</td>
-                <td>43.00</td>
-                <td>33.69</td>
-                <td>49.00</td>
-                <td>43.53</td>
-                <td>55.00</td>
-                <td>24.36</td>
-                <td>18.00</td>
-              </tr>
-              <tr>
-                <td>InternVL2.5-8B</td>
-                <td>14.71</td>
-                <td>33.00</td>
-                <td>17.45</td>
-                <td>40.00</td>
-                <td>19.37</td>
-                <td>43.00</td>
-                <td>19.88</td>
-                <td>15.00</td>
-              </tr>
-              <tr>
-                <td>Qwen2.5-VL-7B</td>
-                <td>17.32</td>
-                <td>35.00</td>
-                <td>18.93</td>
-                <td>44.00</td>
-                <td>25.32</td>
-                <td>49.00</td>
-                <td>23.73</td>
-                <td>19.00</td>
-              </tr>
-              <tr>
-                <td>DeepSeek-VL2</td>
-                <td>11.84</td>
-                <td>27.00</td>
-                <td>14.61</td>
-                <td>40.00</td>
-                <td>19.49</td>
-                <td>43.00</td>
-                <td>7.18</td>
-                <td>5.00</td>
-              </tr>
-              <tr style="font-weight: bold;">
-                <td>Reasoning Layer</td>
-                <td>69.35</td>
-                <td>87.00</td>
-                <td>70.23</td>
-                <td>81.00</td>
-                <td>75.35</td>
-                <td>89.00</td>
-                <td>63.17</td>
-                <td>73.00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="box" style="padding: 1.5rem;">
-        <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 3. Success Rates of the <strong>Acting Layer</strong> across 5 Meta-Actions.
-        </h2>
-        </h2 class="has-text-centered">
-        Moving to a Target Location (MTL), Crossing Obstacles (CO), Grasping a Specified Object (GSO), Placing the
-        Object into a Designated Container (POC), Writing (Wr). Avg. - Average Success Rate, BE - Base Expert, AE -
-        Arm
-        Expert.
-        <h2>
-          <div class="table-container">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
-              <thead style="background-color: #f5f5f5;">
-                <tr>
-                  <th style="min-width: 100px; text-align: center; vertical-align: middle;">Method</th>
-                  <th>MTL</th>
-                  <th>CO</th>
-                  <th>GSO</th>
-                  <th>POC</th>
-                  <th>Wr</th>
-                  <th style="min-width: 100px;">Avg. (%)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>ACT</td>
-                  <td>13/100</td>
-                  <td>3/65</td>
-                  <td>37/100</td>
-                  <td>55/60</td>
-                  <td>19/50</td>
-                  <td>36.86</td>
-                </tr>
-                <tr>
-                  <td>iDP3</td>
-                  <td>47/100</td>
-                  <td>27/65</td>
-                  <td>49/100</td>
-                  <td>43/60</td>
-                  <td>21/50</td>
-                  <td>50.24</td>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                  <td><strong>BE</strong></td>
-                  <td>85/100</td>
-                  <td>58/65</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td><strong>87.12</strong></td>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                  <td><strong>AE</strong></td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>79/100</td>
-                  <td>60/60</td>
-                  <td>48/50</td>
-                  <td><strong>91.67</strong></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="box" style="padding: 1.5rem;">
-        <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 4. Ablation Results with Training Strategy on Three Tasks.
-        </h2>
-        <h2 class="has-text-centered">
-          “+” stands for accumulation.
+          Table 2. Top-1 accuracy (%) comparison for methods suppressing weight oscillation throughout the process in
+          MobileNet-V2.
         </h2>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
             <thead style="background-color: #f5f5f5;">
               <tr>
-                <th rowspan="2" style="min-width: 140px; text-align: center; vertical-align: middle;">Model</th>
-                <th colspan="2">Coarse-grained<br>Long-horizon tasks</th>
-                <th colspan="2">Intensive instruction<br>following tasks</th>
-                <th colspan="2">Cross-Expert<br>multi-tasks</th>
-                <th colspan="2">The zero-shot<br>Generalization task</th>
-              </tr>
-              <tr>
-                <th style="min-width: 150px;">ROUGE_L (%)</th>
-                <th style="min-width: 100px;">Acc. (%)</th>
-                <th style="min-width: 150px;">ROUGE_L (%)</th>
-                <th style="min-width: 100px;">Acc. (%)</th>
-                <th style="min-width: 150px;">ROUGE_L (%)</th>
-                <th style="min-width: 100px;">Acc. (%)</th>
-                <th style="min-width: 150px;">ROUGE_L (%)</th>
-                <th style="min-width: 100px;">Acc. (%)</th>
+                <th rowspan="2" style="min-width: 120px; text-align: center; vertical-align: middle;">Network</th>
+                <th rowspan="2" style="min-width: 120px; text-align: center; vertical-align: middle;">Method</th>
+                <th style="min-width: 100px;">W3A3</th>
+                <th style="min-width: 100px;">W4A4</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Qwen2-VL-7B</td>
-                <td>13.54</td>
-                <td>29.00</td>
-                <td>15.22</td>
-                <td>35.00</td>
-                <td>23.17</td>
-                <td>37.00</td>
-                <td>7.31</td>
-                <td>19.00</td>
+                <td rowspan="6" style="vertical-align: middle;"><strong>MobileNet-V2<br>(FP: 72.1)</strong></td>
+                <td>LSQ</td>
+                <td>65.3</td>
+                <td>69.5</td>
               </tr>
               <tr>
-                <td>+ Cold Start</td>
-                <td>47.35</td>
-                <td>62.00</td>
-                <td>51.42</td>
-                <td>68.00</td>
-                <td>64.57</td>
-                <td>75.00</td>
-                <td>33.16</td>
-                <td>43.00</td>
+                <td>LSQ+BR</td>
+                <td>67.4</td>
+                <td>70.4</td>
               </tr>
               <tr>
-                <td>+ iteration 1</td>
-                <td>54.18</td>
-                <td>69.00</td>
-                <td>54.54</td>
-                <td>70.00</td>
-                <td>67.15</td>
-                <td>79.00</td>
-                <td>35.34</td>
-                <td>55.00</td>
+                <td>LSQ+Dampen</td>
+                <td>67.8</td>
+                <td>70.5</td>
               </tr>
               <tr>
-                <td>+ iteration 2</td>
-                <td>61.58</td>
-                <td>75.00</td>
-                <td>63.29</td>
-                <td>79.00</td>
-                <td>70.23</td>
-                <td>81.00</td>
-                <td>46.57</td>
-                <td>64.00</td>
+                <td>N2UQ</td>
+                <td>69.0</td>
+                <td>72.1</td>
               </tr>
               <tr style="background-color: #f0f0f0;">
-                <td><strong>+ iteration 3</strong></td>
-                <td><strong>69.35</strong></td>
-                <td><strong>87.00</strong></td>
-                <td><strong>70.23</strong></td>
-                <td><strong>81.00</strong></td>
-                <td><strong>75.35</strong></td>
-                <td><strong>89.00</strong></td>
-                <td><strong>63.17</strong></td>
-                <td><strong>73.00</strong></td>
+                <td><strong>LSQ+AOQ</strong></td>
+                <td><strong>69.1</strong></td>
+                <td><strong>71.8</strong></td>
+              </tr>
+              <tr style="background-color: #f0f0f0;">
+                <td><strong>N2UQ+AOQ</strong></td>
+                <td><strong>69.9</strong></td>
+                <td><strong>72.5</strong></td>
               </tr>
             </tbody>
           </table>
@@ -967,67 +580,88 @@
       </div>
     </div>
   </section>
-
-
 
   <section class="section">
     <div class="container is-max-desktop">
       <div class="box" style="padding: 1.5rem;">
         <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 5. Ablation Study of the MindExplore System on the Cruising and Obstacle Avoidance Task.
+          Table 3. Top-1 accuracy (%) comparison with the state-of-the-art methods in the ViT architecture.
         </h2>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
             <thead style="background-color: #f5f5f5;">
               <tr>
-                <th style="min-width: 250px;">Method</th>
-                <th>Task1</th>
-                <th>Task2</th>
-                <th>Task7</th>
-                <th>Task8</th>
-                <th>Task13</th>
-                <th>Task14</th>
-                <th>Task19</th>
-                <th>Task20</th>
-                <th style="min-width: 100px;">Avg. (%)</th>
+                <th rowspan="2" style="min-width: 120px; text-align: center; vertical-align: middle;">Network</th>
+                <th rowspan="2" style="min-width: 120px; text-align: center; vertical-align: middle;">Method</th>
+                <th style="min-width: 100px;">W2A2</th>
+                <th style="min-width: 100px;">W3A3</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>w/o Reasoning & Memory</td>
-                <td>5/10</td>
-                <td>5/10</td>
-                <td>8/10</td>
-                <td>6/10</td>
-                <td>4/10</td>
-                <td>6/10</td>
-                <td>9/10</td>
-                <td>5/10</td>
-                <td>60.00</td>
+                <td rowspan="4" style="vertical-align: middle;"><strong>DeiT-T<br>(FP: 72.1)</strong></td>
+                <td>LSQ</td>
+                <td>54.5</td>
+                <td>68.1</td>
               </tr>
               <tr>
-                <td>w/o Memory</td>
-                <td>8/10</td>
-                <td>7/10</td>
-                <td>10/10</td>
-                <td>7/10</td>
-                <td>5/10</td>
-                <td>8/10</td>
-                <td>9/10</td>
-                <td>7/10</td>
-                <td>76.25</td>
+                <td>QViT*</td>
+                <td>50.4</td>
+                <td>67.1</td>
+              </tr>
+              <tr>
+                <td>OFQ</td>
+                <td>64.3</td>
+                <td>72.7</td>
               </tr>
               <tr style="background-color: #f0f0f0;">
-                <td><strong>MindExplore</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>8/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>9/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>10/10</strong></td>
-                <td><strong>8/10</strong></td>
-                <td><strong>92.50</strong></td>
+                <td><strong>LSQ+AOQ</strong></td>
+                <td><strong>66.5</strong></td>
+                <td><strong>72.3</strong></td>
+              </tr>
+
+              <tr>
+                <td rowspan="4" style="vertical-align: middle;"><strong>DeiT-S<br>(FP: 79.9)</strong></td>
+                <td>LSQ</td>
+                <td>68.0</td>
+                <td>77.8</td>
+              </tr>
+              <tr>
+                <td>QViT*</td>
+                <td>68.7</td>
+                <td>78.5</td>
+              </tr>
+              <tr>
+                <td>OFQ</td>
+                <td>75.7</td>
+                <td>79.6</td>
+              </tr>
+              <tr style="background-color: #f0f0f0;">
+                <td><strong>LSQ+AOQ</strong></td>
+                <td><strong>76.7</strong></td>
+                <td><strong>79.8</strong></td>
+              </tr>
+
+              <tr>
+                <td rowspan="4" style="vertical-align: middle;"><strong>Swin-T<br>(FP: 81.2)</strong></td>
+                <td>LSQ</td>
+                <td>70.4</td>
+                <td>79.0</td>
+              </tr>
+              <tr>
+                <td>QViT*</td>
+                <td>73.9</td>
+                <td>80.1</td>
+              </tr>
+              <tr>
+                <td>OFQ</td>
+                <td>78.5</td>
+                <td>81.1</td>
+              </tr>
+              <tr style="background-color: #f0f0f0;">
+                <td><strong>LSQ+AOQ</strong></td>
+                <td><strong>78.9</strong></td>
+                <td><strong>81.2</strong></td>
               </tr>
             </tbody>
           </table>
@@ -1036,121 +670,75 @@
     </div>
   </section>
 
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="box" style="padding: 1.5rem;">
-        <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
-          Table 6. Ablation Study on Input Modalities for Meta-Actions.<br>
-        </h2>
-        <h2 class="has-text-centered">
-          “PC” - Point Cloud, “2D” - 2D Images.
-        </h2>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
-            <thead style="background-color: #f5f5f5;">
-              <tr>
-                <th style="min-width: 80px;">Method</th>
-                <th style="min-width: 160px;">Input Modality</th>
-                <th style="min-width: 100px;">Depth Type</th>
-                <th>MTL</th>
-                <th>GSO</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>AE</td>
-                <td>RGB</td>
-                <td>-</td>
-                <td>-</td>
-                <td>23/50</td>
-              </tr>
-              <tr style="background-color: #f0f0f0;">
-                <td>AE</td>
-                <td>Depth+RGB</td>
-                <td>PC</td>
-                <td>-</td>
-                <td><strong>40/50</strong></td>
-              </tr>
-              <tr>
-                <td>BE</td>
-                <td>RGB</td>
-                <td>-</td>
-                <td>5/50</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>BE</td>
-                <td>LiDAR+Depth</td>
-                <td>PC</td>
-                <td>37/50</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>BE</td>
-                <td>LiDAR+Depth+RGB</td>
-                <td>2D</td>
-                <td>32/50</td>
-                <td>-</td>
-              </tr>
-              <tr style="background-color: #f0f0f0;">
-                <td>BE</td>
-                <td>LiDAR+Depth+RGB</td>
-                <td>PC</td>
-                <td><strong>42/50</strong></td>
-                <td>-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Paper ACK -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Acknowledgements</h2>
-          <div class="content has-text-justified">
-            <p>
-              This work builds upon the foundation established by
-              <a href="https://github.com/YanjieZe/Improved-3D-Diffusion-Policy" target="_blank">iDP3</a>,
-              and we express our sincere appreciation to the authors for making their implementation publicly
-              available.
-              We also acknowledge the use of the <strong>ms-swift</strong> framework during training, which provided
-              essential support
-              for the development and evaluation of our approach.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- End paper abstract -->
 
+  <!-- Ablation Study Section -->
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <!-- Title -->
+      <h2 class="title is-3">Ablation Study</h2>
 
+      <!-- Description / Motivation -->
+      <div class="content has-text-justified" style="max-width: 800px; margin: 0 auto 1.5rem auto;">
+        <p>
+          To validate the effectiveness of each component of our proposed method, we conduct an ablation study by
+          progressively removing or modifying components and observing the impact on performance. The results,
+          summarized in Table 5, demonstrate the importance of weight quantization, the expansion of the solution
+          space, and the delayed suppression of oscillation in achieving superior quantization performance. Notably,
+          the combination of all these components leads to the most significant performance gain, confirming the
+          benefits of our comprehensive approach.
+        </p>
+      </div>
+    </div>
+  </section>
 
-
-
-
-
-
-
-
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="box" style="padding: 1.5rem;">
+        <h2 class="title is-5 has-text-centered" style="margin-bottom: 1rem;">
+          Table 5. Effects of different components of our strategy on the final performance.
+        </h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+            <thead style="background-color: #f5f5f5;">
+              <tr>
+                <th style="min-width: 300px; text-align: center; vertical-align: middle;">Method</th>
+                <th style="min-width: 120px; text-align: center; vertical-align: middle;">Acc (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: left; padding-left: 1rem;">Baseline [12]</td>
+                <td>73.7</td>
+              </tr>
+              <tr>
+                <td style="text-align: left; padding-left: 1rem;">— Weight quantization</td>
+                <td>76.6</td>
+              </tr>
+              <tr>
+                <td style="text-align: left; padding-left: 1rem;">+ Expanding solution space of weights</td>
+                <td>75.2</td>
+              </tr>
+              <tr>
+                <td style="text-align: left; padding-left: 1rem;">+ Delayed weight oscillation suppression</td>
+                <td>75.6</td>
+              </tr>
+              <tr style="background-color: #f0f0f0;">
+                <td style="text-align: left; padding-left: 1rem;"><strong>+ Both</strong></td>
+                <td><strong>76.3</strong></td>
+              </tr>
+              <tr style="border-top: 2px solid #333;">
+                <td style="text-align: left; padding-left: 1rem; font-weight: bold;">Corresponding real-valued network
+                </td>
+                <td><strong>77.0</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Ablation Study Section -->
 
   <!--BibTex citation -->
   <section class="section" id="BibTeX">
