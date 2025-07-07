@@ -104,11 +104,6 @@
 
                 <span style="color: #1e88e5; font-weight: bold;">ICCV 2025</span>
               </span>
-              <span class="eql-cntrb">
-                <small><br>
-                  <sup>✉</sup> Corresponding Author
-                </small>
-              </span>
             </div>
 
             <div class="column has-text-centered">
@@ -200,6 +195,51 @@
   </section>
   <!-- End paper abstract -->
 
+  <!-- Limitations of Current Methods Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Limitations of Current Methods</h2>
+
+          <!-- Two images with different sizes -->
+          <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+            <div style="flex: 1; max-width: 45%;">
+              <figure class="image">
+                <img src="static/images/limitation_1.png" alt="Limitation 1"
+                  style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+              </figure>
+            </div>
+            <div style="flex: 1.2; max-width: 55%;">
+              <figure class="image">
+                <img src="static/images/limitation_2.png" alt="Limitation 2"
+                  style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+              </figure>
+            </div>
+          </div>
+
+          <!-- Description text -->
+          <div class="content has-text-justified">
+            <p>
+              The left figure shows the loss landscape of a 2-bit quantized ResNet-18 network. The surface exhibits
+              high-frequency oscillations and sharp curvature, indicating that the quantized model is harder to optimize
+              and more prone to getting stuck in poor local minima.
+            </p>
+            <p>
+              The right table analyzes the frequency with which weights cross quantization thresholds during training,
+              reflecting how actively the model explores the quantized solution space. We observe that, regardless of
+              whether SGD or Adam is used, the vast majority of weights rarely cross these thresholds—with most falling
+              below the 0.01% range. This suggests that under current training methods, parameter updates are
+              significantly constrained by the quantization mechanism itself.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Limitations of Current Methods -->
+
   <!-- Toy Example Section -->
   <section class="section">
     <div class="container is-max-desktop has-text-centered">
@@ -266,6 +306,54 @@
     </div>
   </section>
 
+
+  <!-- Training Pipeline Section -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">Training Pipeline</h2>
+      <div style="max-width: 900px; margin: 1.5rem auto 0 auto;">
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              For weight quantization, we define the intervals between quantization thresholds as $s_{th}$ and between
+              quantization levels as $s_{le}$, both initialized to $\frac{\sigma_w}{2^{b-2}}$, where $\sigma_w$ is the
+              standard deviation of weights in a layer, and $b$ is the quantization bit-width. In the first stage, we
+              manually reduce $s_{th}$ and $s_{le}$ to appropriate values to encourage more weights to oscillate at
+              the quantization thresholds.
+            </li>
+            <li>
+              In the second stage, we fix $s_{th}$ and set $s_{le}$ as a learnable parameter for optimization. As
+              $s_{le}$ increases during training, the intervals between quantization levels widen, making the cost of
+              mapping errors from floating-point weights to quantized values higher, thereby gradually reducing
+              oscillation. The quantizer is:
+              <div style="text-align: center; margin: 1rem 0;">
+                $$
+                \begin{align}
+                \hat{w} &= \begin{cases}
+                \text{level}[0] & \text{if } w < \text{thresh}[0] \\ \text{level}[i] & \text{if } \text{thresh}[i-1]
+                  \leq w < \text{thresh}[i] \\ \text{level}[2^b - 1] & \text{if } w \geq \text{thresh}[2^b - 2]
+                  \end{cases} \\ &\text{where } i \in \{1, 2, \ldots, 2^b - 2\}. \end{align} $$ </div>
+                  thresh[i] and level[i]
+                  represent the (i+1)-th threshold and level,
+                  respectively, in ascending numerical order. The optimized quantized weights are denoted as:
+                  <div style="text-align: center; margin: 1rem 0;">
+                    $$\tilde{w} = \hat{w} + w - w.\text{detach}().$$
+                  </div>
+            </li>
+            <li>
+              In the third stage, we employ the <em>Oscillation Dampening</em> method. This method adds a penalty term
+              to the loss function:
+              <div style="text-align: center; margin: 1rem 0;">
+                $$\mathcal{L} = \mathcal{L}_{\text{task}} + \lambda \mathcal{L}_{\text{dampen}},$$
+              </div>
+              where $\lambda$ is a hyperparameter. $\mathcal{L}_{\text{dampen}}$ pulls weights oscillating near the
+              quantization thresholds away to suppress oscillation.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
     <div class="container is-max-desktop has-text-centered">
@@ -698,7 +786,7 @@
   <!-- End paper abstract -->
 
   <!-- Ablation Study Section -->
-  <section class="section">
+  <section class="section hero is-light">
     <div class="container is-max-desktop has-text-centered">
       <!-- Title -->
       <h2 class="title is-3">Ablation Study</h2>
